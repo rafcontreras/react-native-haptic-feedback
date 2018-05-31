@@ -5,11 +5,27 @@
 
 `$ npm install react-native-haptic-feedback --save`
 
-### Mostly automatic installation
+## Migrate from V1 to V2
+- No Default import. Please use corresponding imports from the docs
+- trigger() now only accepts an object of arguments according to docs.
+
+Previously:
+```javascript
+import RNHapticFeedback from "react-native-haptic-feedback"
+RNHapticFeedback.trigger('impactLight');
+```
+
+Now:
+```javascript
+import {HapticFeedback} from "react-native-haptic-feedback"
+HapticFeedback.trigger({type: 'impactLight'})
+```
+
+### Linking
 
 `$ react-native link react-native-haptic-feedback`
 
-### Manual installation
+### Manual Linking
 
 
 #### iOS
@@ -41,11 +57,10 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 ReactNativeHapticFeedback.trigger('impactLight', true);
 ```
 
-### Available methods
+### Available methods HapticFeedback
 
-#### trigger(method, enableVibrateFallback)
+#### trigger({type, enableVibrateFallback})
+#### isHapticFeedbackAvailable({type, enableVibrateFallback})
 
-Argument | Description
------- | ------
-`method` | Possible values are "selection", "impactLight", "impactMedium", "impactHeavy", "notificationSuccess", "notificationWarning", "notificationError" (default: "selection")
-`enableVibrateFallback` | iOS only. if haptic feedback is not available (iOS < 10 OR Device < iPhone6s), vibrate with default method (heavy 1s)
+### TouchableWithHapticFeedback Props
+

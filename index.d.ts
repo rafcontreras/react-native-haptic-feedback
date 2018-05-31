@@ -15,6 +15,12 @@ declare module "react-native-haptic-feedback" {
   export interface TouchableWithHapticFeedbackProps extends ReactNative.TouchableWithoutFeedbackProperties {
     hapticType?: HapticFeedbackTypes,
     enableVibrateFallback?: boolean;
+    hapticOnPressIn?: boolean;
+    hapticTypeOnPressIn?: HapticFeedbackTypes;
+    hapticOnPressOut?: boolean;
+    hapticTypeOnPressOut?: HapticFeedbackTypes;
+    hapticOnPress?: boolean;
+    hapticTypeOnPress?: HapticFeedbackTypes;
   }
   export class TouchableWithHapticFeedback extends React.Component<TouchableWithHapticFeedbackProps, any> { }
 

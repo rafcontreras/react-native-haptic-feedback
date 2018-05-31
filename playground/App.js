@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import {TouchableWithHapticFeedback} from 'react-native-haptic-feedback';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -33,6 +34,10 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+
+        <TouchableWithHapticFeedback>
+          <Text>Fizz</Text>
+        </TouchableWithHapticFeedback>
       </View>
     );
   }

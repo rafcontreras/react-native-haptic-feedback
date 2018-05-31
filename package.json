@@ -18,6 +18,7 @@
     "feedback"
   ],
   "author": "Michael Kuczera",
+  "dependencies": {},
   "peerDependencies": {
     "react-native": "0.41.2"
   },
