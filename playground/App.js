@@ -9,9 +9,10 @@ import {
   Platform,
   StyleSheet,
   Text,
+  ScrollView,
   View
 } from 'react-native';
-import {TouchableWithHapticFeedback} from 'react-native-haptic-feedback';
+import {TouchableWithHapticFeedback, HapticFeedback} from 'react-native-haptic-feedback';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -24,21 +25,13 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-
+      <ScrollView style={styles.container}>
         <TouchableWithHapticFeedback>
-          <Text>Fizz</Text>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Fizz</Text>
+          </View>
         </TouchableWithHapticFeedback>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -46,18 +39,18 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F5FCFF',
+    padding: 10
+  },
+  button: {
+    height: 50,
+    flex: 0,
+    backgroundColor: 'grey',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginVertical: 30
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  buttonText: {
+
+  }
 });

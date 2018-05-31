@@ -21,9 +21,18 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(trigger:(NSString *)type enableVibrateFallback:(BOOL)enableVibrateFallback)
+- (NSDictionary *)constantsToExport
 {
-    if ([self supportsHaptic]){
+    return @{ @"isHapticFeedbackAvailable": [NSNumber numberWithBool:[self supportsHaptic]] };
+}
+
+RCT_EXPORT_METHOD(
+    trigger: (NSDictionary*)options
+    resolver:(RCTPromiseResolveBlock)resolve
+    rejecter:(RCTPromiseRejectBlock)reject)
+{
+    if ([self supportsHaptic]) {
+        NSString* type = options[@"type"];
         
         if ([type isEqual: @"impactLight"]) {
             [self generateImpactFeedback:UIImpactFeedbackStyleLight];
@@ -41,10 +50,14 @@ RCT_EXPORT_METHOD(trigger:(NSString *)type enableVibrateFallback:(BOOL)enableVib
             [self generateSelectionFeedback];
         }
         
-    } else if (enableVibrateFallback) {
+        resolve(nil);
+        
+    } else if (options[@"enableVibrateFallback"]) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        resolve(@"fallback");
+    } else {
+        reject(@"not_available", @"Haptic feedback is not available", nil);
     }
-    
 }
 
 -(Boolean)supportsHaptic {

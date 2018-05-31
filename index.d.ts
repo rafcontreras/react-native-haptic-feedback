@@ -28,8 +28,8 @@ declare module "react-native-haptic-feedback" {
     trigger(options: {
       type: HapticFeedbackTypes,
       enableVibrateFallback: boolean
-    }): Promise<boolean>;
-    isHapticFeedbackAvailable(): boolean;
+    }): Promise<boolean | 'fallback'>;
+    isHapticFeedbackAvailable: boolean;
   }
 
 }
