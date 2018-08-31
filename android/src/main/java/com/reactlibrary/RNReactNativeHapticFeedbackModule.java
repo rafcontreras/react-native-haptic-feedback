@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package as.contrer;
 
 import android.os.Vibrator;
 import android.content.Context;
